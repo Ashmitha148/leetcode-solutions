@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>>v(numRows);
+        for(int i=0;i<numRows;i++) {
+            v[i]=vector<int>(i+1,0);
+        }
+        for(auto i=0;i<numRows;i++) {
+            v[i][0]=1;
+            v[i][i]=1;
+        }
+        for(auto i=2;i<numRows;i++) {
+            for(auto j=1;j<i;j++) {
+                v[i][j]=v[i-1][j-1]+v[i-1][j];
+            }
+        }
+        return v;
+    }
+};
